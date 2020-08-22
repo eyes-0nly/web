@@ -18,6 +18,7 @@ import Form from '../../Form';
 import FormGroup from '../../Form/Group';
 import Button from '../../Form/Button';
 import TextField from '../../Form/TextField';
+import Chapters from './Chapters';
 
 // naive HH:mm:ss → seconds
 const parseDuration = (str) => str.split(':')
@@ -115,6 +116,13 @@ class EditMediaDialog extends React.Component {
     this.setState({ end: event.target.value });
   };
 
+  handleChangeChapter = (chapter) => {
+    this.setState({
+      start: formatDuration(chapter.start * 1000),
+      end: formatDuration(chapter.end * 1000),
+    });
+  };
+
   handleSwapArtistTitle = () => {
     this.setState(({ artist, title }) => ({
       artist: title,
@@ -199,6 +207,21 @@ class EditMediaDialog extends React.Component {
       />
     );
 
+    const chapters = media.sourceData && media.sourceData.chapters && media.sourceData.chapters.length > 0 ? (
+      <FormGroup className="EditMediaDialog-chapters">
+        <p className="EditMediaDialog-chaptersLabel">
+          {t('dialogs.editMedia.chapterLabel')}
+        </p>
+        <Chapters
+          className="EditMediaDialog-chaptersList"
+          available={media.sourceData.chapters}
+          start={parseDuration(start)}
+          end={parseDuration(end)}
+          onChange={this.handleChangeChapter}
+        />
+      </FormGroup>
+    ) : null;
+
     return (
       <Form onSubmit={this.handleSubmit}>
         {errors && errors.length > 0 && (
@@ -234,6 +257,8 @@ class EditMediaDialog extends React.Component {
             </FormGroup>
           </div>
         </div>
+
+        {chapters}
 
         <FormGroup className="FormGroup--noSpacing">
           <Button className="EditMediaDialog-submit">
