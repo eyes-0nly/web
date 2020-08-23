@@ -6,6 +6,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 import { nanoid } from 'nanoid/non-secure';
 import formatDuration from 'format-duration';
 import ArtistIcon from '@material-ui/icons/Headset';
@@ -156,9 +157,14 @@ class EditMediaDialog extends React.Component {
     );
     const artistTitleLabel = (
       <div className="EditMediaDialogGroup-label">
-        <IconButton onClick={this.handleSwapArtistTitle} tabIndex={BASE_TAB_INDEX + 1}>
-          <SwapArtistTitleIcon htmlColor="#9f9d9e" />
-        </IconButton>
+        <Tooltip title={t('dialogs.editMedia.swapArtistTitle')} placement="top">
+          <IconButton
+            onClick={this.handleSwapArtistTitle}
+            tabIndex={BASE_TAB_INDEX + 1}
+          >
+            <SwapArtistTitleIcon htmlColor="#9f9d9e" />
+          </IconButton>
+        </Tooltip>
       </div>
     );
     const titleInput = (
