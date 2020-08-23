@@ -208,7 +208,7 @@ class EditMediaDialog extends React.Component {
     );
 
     const chapters = media.sourceData && media.sourceData.chapters && media.sourceData.chapters.length > 0 ? (
-      <FormGroup className="EditMediaDialog-chapters">
+      <FormGroup className="FormGroup--noSpacing EditMediaDialog-chapters">
         <p className="EditMediaDialog-chaptersLabel">
           {t('dialogs.editMedia.chapterLabel')}
         </p>
@@ -260,7 +260,7 @@ class EditMediaDialog extends React.Component {
 
         {chapters}
 
-        <FormGroup className="FormGroup--noSpacing">
+        <FormGroup>
           <Button className="EditMediaDialog-submit">
             {t('dialogs.editMedia.save')}
           </Button>
