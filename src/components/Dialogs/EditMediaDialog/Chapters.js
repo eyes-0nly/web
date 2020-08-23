@@ -12,6 +12,7 @@ function Chapters({
   start,
   end,
   onChange,
+  ...props
 }) {
   const { t } = useTranslator();
   const handleChange = (event) => {
@@ -31,6 +32,7 @@ function Chapters({
       }}
       onChange={handleChange}
       value={selectedIndex}
+      {...props}
     >
       <MenuItem disabled value={-1}>
         <span className="Chapters-placeholder">

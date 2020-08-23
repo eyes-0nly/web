@@ -17,6 +17,7 @@ function Select({
   children,
   className,
   classes,
+  tabIndex,
   ...props
 }) {
   return (
@@ -34,6 +35,7 @@ function Select({
         classes,
         autoWidth: false,
         multiple: false,
+        tabIndex,
       }}
     />
   );
@@ -42,6 +44,7 @@ function Select({
 Select.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  tabIndex: PropTypes.number,
   classes: PropTypes.object,
 };
 

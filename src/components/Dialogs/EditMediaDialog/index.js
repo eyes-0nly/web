@@ -156,7 +156,7 @@ class EditMediaDialog extends React.Component {
     );
     const artistTitleLabel = (
       <div className="EditMediaDialogGroup-label">
-        <IconButton onClick={this.handleSwapArtistTitle}>
+        <IconButton onClick={this.handleSwapArtistTitle} tabIndex={BASE_TAB_INDEX + 1}>
           <SwapArtistTitleIcon htmlColor="#9f9d9e" />
         </IconButton>
       </div>
@@ -168,7 +168,7 @@ class EditMediaDialog extends React.Component {
         value={title}
         onChange={this.handleChangeTitle}
         icon={<TitleIcon htmlColor="#9f9d9e" />}
-        tabIndex={BASE_TAB_INDEX + 1}
+        tabIndex={BASE_TAB_INDEX + 2}
       />
     );
 
@@ -186,7 +186,7 @@ class EditMediaDialog extends React.Component {
         value={start}
         onChange={this.handleChangeStart}
         icon={<StartIcon htmlColor="#9f9d9e" />}
-        tabIndex={BASE_TAB_INDEX + 2}
+        tabIndex={BASE_TAB_INDEX + 3}
       />
     );
     const toLabel = (
@@ -199,11 +199,11 @@ class EditMediaDialog extends React.Component {
       <TextField
         id={this.endFieldId}
         className="EditMediaDialogGroup-field"
-        placeholder={formatDuration(media.duration)}
+        placeholder={formatDuration(media.duration * 1000)}
         value={end}
         onChange={this.handleChangeEnd}
         icon={<EndIcon htmlColor="#9f9d9e" />}
-        tabIndex={BASE_TAB_INDEX + 3}
+        tabIndex={BASE_TAB_INDEX + 4}
       />
     );
 
@@ -218,6 +218,7 @@ class EditMediaDialog extends React.Component {
           start={parseDuration(start)}
           end={parseDuration(end)}
           onChange={this.handleChangeChapter}
+          tabIndex={BASE_TAB_INDEX + 5}
         />
       </FormGroup>
     ) : null;
@@ -261,7 +262,7 @@ class EditMediaDialog extends React.Component {
         {chapters}
 
         <FormGroup>
-          <Button className="EditMediaDialog-submit">
+          <Button className="EditMediaDialog-submit" tabIndex={BASE_TAB_INDEX + 6}>
             {t('dialogs.editMedia.save')}
           </Button>
         </FormGroup>
